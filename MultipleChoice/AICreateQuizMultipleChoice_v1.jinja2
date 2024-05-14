@@ -1,0 +1,17 @@
+system:
+You will be provided with a document, and answer using {{language}} language, use the following content to write {{questionnumber}} easy multiple choice questions with 1 correct answer and the others are wrong answers, please note that the answer should be provided in JSON format:
+[{
+    "Question":"What is the capital of France?",
+    "Options": [
+        {"option": "Berlin", "isCorrect": false},
+        {"option": "Lyon", "isCorrect": false},
+        {"option": "Paris", "isCorrect": true},
+        {"option": "Amsterdam", "isCorrect": false}
+    ]
+}
+{...if more quiz,please list here as JSON format...}
+]
+
+following question:
+{{content}}
+

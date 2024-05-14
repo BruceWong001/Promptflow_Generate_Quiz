@@ -1,0 +1,64 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+environment:
+  python_requirements_txt: requirements.txt
+inputs:
+  content:
+    type: string
+    default: 紫禁城,位于中国北京，始建于明朝永乐四年（1406年），是明清两代的皇宫，延续使用了近五百年，至今已有超过600年的历史。这座宏伟的宫殿是中国古代宫廷建筑之精华，占地约720,000平方米，有宫墙围绕，内有多达9999间房屋。紫禁城不仅是中国的政治中心，也是文化和礼仪的重心，其建筑和布局反映了中国的传统哲学和宇宙观。1961年，紫禁城被列为中国国家级文物保护单位，并于1987年被联合国教科文组织评定为世界文化遗产。现今，它作为故宫博物院，对公众开放，每年吸引着成千上万的游客和历史爱好者。
+    description: 传入的生成quiz赌赢的文档内容。
+  language:
+    type: string
+    default: Chinese
+    description: 生成考题的期待语言
+  questionnumber:
+    type: int
+    default: 3
+    description: 预期的考题个数。
+outputs:
+  answer:
+    type: string
+    reference: ${format_response.output}
+nodes:
+- name: chat
+  use_variants: true
+- name: format_response
+  type: python
+  source:
+    type: code
+    path: format_response.py
+  inputs:
+    llmresponse: ${chat.output}
+node_variants:
+  chat:
+    default_variant_id: variant_1
+    variants:
+      variant_0:
+        node:
+          type: llm
+          source:
+            type: code
+            path: AICreateQuizMultipleChoice_v1.jinja2
+          inputs:
+            deployment_name: gpt-35-turbo-16k
+            max_tokens: 1000
+            temperature: 0.7
+            content: ${inputs.content}
+            language: ${inputs.language}
+            questionnumber: ${inputs.questionnumber}
+          connection: azure_oai_gpt35
+          api: chat
+      variant_1:
+        node:
+          type: llm
+          source:
+            type: code
+            path: AICreateQuizMultipleChoice_v2.jinja2
+          inputs:
+            deployment_name: gpt-35-turbo-16k
+            max_tokens: 1000
+            temperature: 0.7
+            content: ${inputs.content}
+            language: ${inputs.language}
+            questionnumber: ${inputs.questionnumber}
+          connection: azure_oai_gpt35
+          api: chat

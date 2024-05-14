@@ -1,0 +1,80 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+environment:
+  python_requirements_txt: requirements.txt
+inputs:
+  content:
+    type: string
+    default: 中国の歴史的発展の過程で、調和の文化は長い歴史を持ち、人民との調和、調和と相互扶助、政治的調和、内外の調和などの深遠な哲学と美しい社会的理想を含み、中華文明において非常に重要な位置を占め、中華民族の一連の平和的実践と平和思想の魂です共通の課題に直面して、人類が協力し、共存するための唯一の方法があります。
+      中華文明の平和性を推し進め、時代の流れに順応することは、各国の人々の共鳴を鼓舞し、世界の人々の心をつかみ、中国の知恵を世界の平和と平穏の維持に寄与することができる歴史を通じて、多様性と相違は人類文明の基本的特徴であり、すべての文明は自国の現実から前進することに固執し、心を開いて彼らから学び、他の文明の長所と本質から積極的に学び、疎外、偏見、憎しみを排除し、平和の概念の種を蒔くべきです
+    description: 传入的生成quiz赌赢的文档内容。
+  language:
+    type: string
+    default: Japanese
+    description: 生成考题的期待语言
+  questionnumber:
+    type: int
+    default: 3
+    description: 预期的考题个数。
+outputs:
+  answer:
+    type: string
+    reference: ${format_response.output}
+nodes:
+- name: chat
+  use_variants: true
+- name: format_response
+  type: python
+  source:
+    type: code
+    path: format_response.py
+  inputs:
+    llmresponse: ${chat.output}
+node_variants:
+  chat:
+    default_variant_id: variant_2
+    variants:
+      variant_0:
+        node:
+          type: llm
+          source:
+            type: code
+            path: CurriculaAICreateQuizCategories_v1.jinja2
+          inputs:
+            deployment_name: gpt-35-turbo-16k
+            max_tokens: 1000
+            temperature: 0.2
+            content: ${inputs.content}
+            language: ${inputs.language}
+            questionnumber: ${inputs.questionnumber}
+          connection: azure_oai_gpt35
+          api: chat
+      variant_1:
+        node:
+          type: llm
+          source:
+            type: code
+            path: CurriculaAICreateQuizCategories_v2.jinja2
+          inputs:
+            deployment_name: gpt-35-turbo-16k
+            max_tokens: 1000
+            temperature: 0.2
+            content: ${inputs.content}
+            language: ${inputs.language}
+            questionnumber: ${inputs.questionnumber}
+          connection: azure_oai_gpt35
+          api: chat
+      variant_2:
+        node:
+          type: llm
+          source:
+            type: code
+            path: CurriculaAICreateQuizCategories_v3.jinja2
+          inputs:
+            deployment_name: gpt-35-turbo-16k
+            max_tokens: 1000
+            temperature: 0.7
+            content: ${inputs.content}
+            language: ${inputs.language}
+            questionnumber: ${inputs.questionnumber}
+          connection: azure_oai_gpt35
+          api: chat

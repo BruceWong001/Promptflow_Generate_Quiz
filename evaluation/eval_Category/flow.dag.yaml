@@ -1,0 +1,67 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+environment:
+  python_requirements_txt: requirements.txt
+inputs:
+  answer:
+    type: string
+    default: '{"answer":[{"Question":"What are the differences between prompt flow
+      and LangChain?","Categories":[{"name":"Prompt
+      Flow","keywords":["development tools","LLM
+      apps","quality","experimentations"]},{"name":"LangChain","keywords":["framework","Microsoft","LLMs","existing
+      systems","new applications"]}]},{"Question":"What are the fundamental
+      design principles of prompt flow?","Categories":[{"name":"Design
+      Principles","keywords":["quality","experimentations","development
+      tools","LLM apps"]},{"name":"Insights from
+      Microsoft","keywords":["developers","integrating LLMs","existing
+      systems","new applications"]}]},{"Question":"What is the purpose of prompt
+      flow?","Categories":[{"name":"Purpose","keywords":["development
+      tools","build LLM
+      apps","quality","experimentations"]},{"name":"LangChain","keywords":["framework","Microsoft","LLMs","existing
+      systems","new applications"]}]}],"line_number":2}'
+  content:
+    type: string
+    default: When we started this project, LangChain already became popular esp.
+      after the ChatGPT launch. One of the questions we have been asked is what
+      is the difference between prompt flow and LangChain. This article is to
+      elucidate the reasons for building prompt flow and the deliberate design
+      choices we have made. To put it succinctly, prompt flow is a suite of
+      development tools for you to build LLM apps with a strong emphasis of
+      quality through experimentations, not a framework - which LangChain is.
+      While LLM apps are mostly in exploration stage, Microsoft started in this
+      area a bit earlier and we have had the opportunity to observe how
+      developers are integrating LLMs into existing systems or build new
+      applications. These invaluable insights have shaped the fundamental design
+      principles of prompt flow.
+outputs:
+  groundedness:
+    type: string
+    reference: ${parse_score.output}
+nodes:
+- name: gpt_groundedness
+  type: llm
+  source:
+    type: code
+    path: gpt_groundedness.jinja2
+  inputs:
+    deployment_name: gpt-4-32k
+    temperature: 0
+    max_tokens: 5
+    answer: ${inputs.answer}
+    content: ${inputs.content}
+  connection: azure_oai_gpt4
+  api: chat
+- name: parse_score
+  type: python
+  source:
+    type: code
+    path: parse_score.py
+  inputs:
+    gpt_score: ${gpt_groundedness.output}
+- name: aggregate
+  type: python
+  source:
+    type: code
+    path: aggregate.py
+  inputs:
+    groundedness_scores: ${parse_score.output}
+  aggregation: true

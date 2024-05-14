@@ -1,0 +1,89 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+environment:
+  python_requirements_txt: requirements.txt
+inputs:
+  answer:
+    type: string
+    default: '"answer": [{"Question": "What is the difference between prompt flow
+      and LangChain?", "Options": [{"option": "Prompt flow is a suite of
+      development tools for building LLM apps, while LangChain is a framework.",
+      "isCorrect": false}, {"option": "Prompt flow is a framework for building
+      LLM apps, while LangChain is a suite of development tools.", "isCorrect":
+      false}, {"option": "Prompt flow and LangChain are both suites of
+      development tools for building LLM apps.", "isCorrect": false}, {"option":
+      "Prompt flow and LangChain are both frameworks for building LLM apps.",
+      "isCorrect": true}]}, {"Question": "What is the main emphasis of prompt
+      flow?", "Options": [{"option": "Quality through experimentations",
+      "isCorrect": true}, {"option": "Building LLM apps", "isCorrect": false},
+      {"option": "Integrating LLMs into existing systems", "isCorrect": false},
+      {"option": "Observing developers", "isCorrect": false}]}, {"Question":
+      "What has shaped the fundamental design principles of prompt flow?",
+      "Options": [{"option": "The popularity of LangChain", "isCorrect": false},
+      {"option": "The exploration stage of LLM apps", "isCorrect": false},
+      {"option": "Observing how developers integrate LLMs", "isCorrect": true},
+      {"option": "The launch of ChatGPT", "isCorrect": false}]}]'
+  content:
+    type: string
+    default: When we started this project, LangChain already became popular esp.
+      after the ChatGPT launch. One of the questions we have been asked is what
+      is the difference between prompt flow and LangChain. This article is to
+      elucidate the reasons for building prompt flow and the deliberate design
+      choices we have made. To put it succinctly, prompt flow is a suite of
+      development tools for you to build LLM apps with a strong emphasis of
+      quality through experimentations, not a framework - which LangChain is.
+      While LLM apps are mostly in exploration stage, Microsoft started in this
+      area a bit earlier and we have had the opportunity to observe how
+      developers are integrating LLMs into existing systems or build new
+      applications. These invaluable insights have shaped the fundamental design
+      principles of prompt flow.
+outputs:
+  groundedness:
+    type: string
+    reference: ${parse_score.output}
+  formatchecking:
+    type: string
+    reference: ${response_formatcheck.output}
+nodes:
+- name: gpt_groundedness
+  type: llm
+  source:
+    type: code
+    path: gpt_groundedness.jinja2
+  inputs:
+    deployment_name: gpt-4-32k
+    temperature: 0
+    max_tokens: 5
+    answer: ${inputs.answer}
+    content: ${inputs.content}
+  connection: azure_oai_gpt4
+  api: chat
+- name: parse_score
+  type: python
+  source:
+    type: code
+    path: parse_score.py
+  inputs:
+    gpt_score: ${gpt_groundedness.output}
+- name: convertanswer_json
+  type: python
+  source:
+    type: code
+    path: convertanswer_json.py
+  inputs:
+    llm_answer: ${inputs.answer}
+- name: response_formatcheck
+  type: python
+  source:
+    type: code
+    path: response_formatcheck.py
+  inputs:
+    validate_json: ${convertanswer_json.output}
+- name: aggregate
+  type: python
+  source:
+    type: code
+    path: aggregate.py
+  inputs:
+    groundedness_scores: ${parse_score.output}
+    format_scores: ${response_formatcheck.output}
+  aggregation: true

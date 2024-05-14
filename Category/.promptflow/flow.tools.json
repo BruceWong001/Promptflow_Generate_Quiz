@@ -1,0 +1,151 @@
+{
+  "package": {},
+  "code": {
+    "chat.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "chat_history": {
+          "type": [
+            "string"
+          ]
+        },
+        "question": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "chat.jinja2"
+    },
+    "prompt_node_acid.jinja2": {
+      "type": "prompt",
+      "inputs": {
+        "text": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "prompt_node_acid.jinja2"
+    },
+    "Format_Response.py": {
+      "type": "python",
+      "inputs": {
+        "input1": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "Format_Response.py",
+      "function": "my_python_tool"
+    },
+    "format_response.py": {
+      "type": "python",
+      "inputs": {
+        "llmresponse": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "format_response.py",
+      "function": "my_python_tool"
+    },
+    "CurriculaAICreateQuizCategories_v2.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "content": {
+          "type": [
+            "string"
+          ]
+        },
+        "questionnumber": {
+          "type": [
+            "string"
+          ]
+        },
+        "language": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "CurriculaAICreateQuizCategories_v2.jinja2"
+    },
+    "chat_variant_1.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "content": {
+          "type": [
+            "string"
+          ]
+        },
+        "language": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "chat_variant_1.jinja2"
+    },
+    "CurriculaAICreateQuizCategories_v1.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "language": {
+          "type": [
+            "string"
+          ]
+        },
+        "questionnumber": {
+          "type": [
+            "string"
+          ]
+        },
+        "content": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "CurriculaAICreateQuizCategories_v1.jinja2"
+    },
+    "chat_variant_2.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "content": {
+          "type": [
+            "string"
+          ]
+        },
+        "language": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "chat_variant_2.jinja2"
+    },
+    "CurriculaAICreateQuizCategories_v3.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "content": {
+          "type": [
+            "string"
+          ]
+        },
+        "questionnumber": {
+          "type": [
+            "string"
+          ]
+        },
+        "language": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "CurriculaAICreateQuizCategories_v3.jinja2"
+    }
+  }
+}

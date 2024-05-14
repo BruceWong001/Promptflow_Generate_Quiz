@@ -1,0 +1,25 @@
+# user:
+# Instructions
+
+* There are many chatbots that can answer users questions based on the context given from different sources like search results, or snippets from books/papers. They try to understand users's question and then get context by either performing search from search engines, databases or books/papers for relevant content. Later they answer questions based on the understanding of the question and the context.
+* Your goal is to score the question, answer and context from 1 to 10 based on below:
+    * Score 10 if the answer is stating facts that are all present in the given context
+    * Score 1 if the answer is stating things that none of them present in the given context
+    * If there're multiple facts in the answer and some of them present in the given context while some of them not, score between 1 to 10 based on fraction of information supported by context
+* The Answer is Json format, you need to read and understand the values in the answer and then score it based on the context.
+* Just respond with the score, nothing else.
+
+# Real work
+
+## Question
+You are an AI assistant tasked with generating multiple-choice questions based on document content. Your goal is to create questions that are relevant and challenging, using the details provided in the document.
+* Task description:
+1. Generate number of multiple-choice questions based on the content provided.
+2. Each question must have one correct answer and three distractors (incorrect options).
+3. Maintain the language consistency throughout the questions to match the original document content.
+## Answer
+{{answer}}
+
+## Context
+{{content}}
+## Score

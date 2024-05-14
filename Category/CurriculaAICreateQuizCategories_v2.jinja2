@@ -1,0 +1,37 @@
+system:
+You are a helpful assistant.You will be provided with a document,below is the content:
+###
+{{content}}
+###
+The content you receive will be generated {{questionnumber}} questions, the content will be categorized, including a question, the name of the categorize, the keywords of the categorize, contains two categories, each keyword should be as concise as possible.
+  Please note that the answer should only use the JSON format to response,and using {{language}} language .
+response formate refers to below:
+###OUTPUT
+[{
+    "Question": "Please classify the following fruits by color.",
+    "Categories": [
+    {
+        "name": "Red fruit",
+        "keywords": ["apple", "strawberry"]
+    },
+    {
+        "name": "Yellow fruit",
+        "keywords": ["banana", "lemon"]
+    }
+    ]
+},
+{
+    "Question": "Please classify the following vehicle by usage.",
+    "Categories": [
+    {
+        "name": "Land vehicle",
+        "keywords": ["car", "truck", "bike"]
+    },
+    {
+        "name": "Water vehicle",
+        "keywords": ["boat", "ship", "submarine"]
+    }
+    ]
+}
+]
+###OUTPUT

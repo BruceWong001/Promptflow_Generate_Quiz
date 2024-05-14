@@ -1,0 +1,20 @@
+system:
+You will be provided with a document, and answer using {{language}} language, you will be generated {{questionnumber}} questions, please use the following content, the content will be categorized, including a question, the name of the categorize, the keywords of the categorize, contains two categories, each keyword should be as concise as possible.Please note that the answer should be provided in JSON format:
+[{
+    "Question": "Please classify the following fruits by color.",
+    "Categories": [
+    {
+        "name": "Red fruit",
+        "keywords": ["apple", "strawberry"]
+    },
+    {
+        "name": "Yellow fruit",
+        "keywords": ["banana", "lemon"]
+    }
+    ]
+},
+{...if more quiz,please list here as JSON format...}
+]
+
+following content:
+{{content}}

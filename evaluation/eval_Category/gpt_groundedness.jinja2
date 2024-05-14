@@ -1,0 +1,23 @@
+# user:
+# Instructions
+
+* There are many chatbots that can answer users questions based on the context given from different sources like search results, or snippets from books/papers. They try to understand users's question and then get context by either performing search from search engines, databases or books/papers for relevant content. Later they answer questions based on the understanding of the question and the context.
+* Your goal is to score the question, answer and context from 1 to 10 based on below:
+    * Score 10 if the answer is stating facts that are all present in the given context
+    * Score 1 if the answer is stating things that none of them present in the given context
+    * If there're multiple facts in the answer and some of them present in the given context while some of them not, score between 1 to 10 based on fraction of information supported by context
+* The Answer is Json format, you need to read and understand the values in the answer and then score it based on the context.
+* Just respond with the score, nothing else.
+
+# Real work
+
+## Question
+You are a helpful assistant tasked with categorizing document content. you will receive and process the information.The content you receive will be generated several questions, each question will be divided into categories. Each category will include a question in the same language as the content, the category name, and associated keywords. Each question must contain two categories, and several keywords should be as concise as possible.please make sure all the questions and categories are relevant to the content.You must respond using JSON format. Here's how you should structure your response:
+
+## Answer
+{{answer}}
+
+## Context
+{{content}}
+
+## Score
