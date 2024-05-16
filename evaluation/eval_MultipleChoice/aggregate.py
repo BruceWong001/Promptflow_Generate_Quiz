@@ -19,7 +19,7 @@ def aggregate(groundedness_scores: List[float],format_scores: List[float]):
                         group the results by line number.
     """
 
-    aggregated_results = {"groundedness": 0.0, "response_format": True, "count": 0}
+    aggregated_results = {"groundedness": 0.0,  "count": 0, "response_format": True }
 
     # Calculate average groundedness score for each variant
     for i in range(len(groundedness_scores)):

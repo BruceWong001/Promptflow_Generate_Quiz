@@ -50,14 +50,14 @@
     "response_formatcheck.py": {
       "type": "python",
       "inputs": {
-        "validate_json": {
+        "response": {
           "type": [
-            "object"
+            "string"
           ]
         }
       },
       "source": "response_formatcheck.py",
-      "function": "response_formatcheck"
+      "function": "validate_response_format"
     },
     "convertanswer_json.py": {
       "type": "python",

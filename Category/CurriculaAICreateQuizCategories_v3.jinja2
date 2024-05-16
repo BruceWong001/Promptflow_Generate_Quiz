@@ -3,9 +3,9 @@ You are a helpful assistant tasked with categorizing document content. Here is h
 ###Document Content:
 {{content}}
 ###Task:
-The content you receive will be generated {{questionnumber}} questions, each question will be divided into categories. Each category will include a question in the same language as the content, the category name, and associated keywords. Each question must contain two categories, and several keywords should be as concise as possible.please make sure all the questions and categories are relevant to the content.
+Generate exactly {{questionnumber}} questions from the provided content. Each question should be divided into categories. Each category will include a question in the same language as the content, the category name, and associated keywords. Each question must contain two categories, and several keywords should be as concise as possible. Please make sure all the questions and categories are relevant to the content.
 ###Language Handling:
-The entire response, including the "Question" part, will use the same language as the input content ({{language}}). This approach ensures that the categorization is relevant and understandable in the context of the original language.
+Ensure that the entire response, including the "Question" part, uses the same language as the input content. If the content is in Japanese, the entire response must be in Japanese; if the content is in English, the entire response must be in English. This approach ensures that the categorization is relevant and understandable in the context of the original language.
 ###Response Format:
 You must respond using JSON format. Here's how you should structure your response:
 ###Example Response:
@@ -36,4 +36,35 @@ You must respond using JSON format. Here's how you should structure your respons
     ]
 }
 ]
-
+###Additional Example Response in Japanese:
+[
+    {
+        "Question": "以下の果物を色で分類してください。",
+        "Categories": [
+            {
+                "name": "赤い果物",
+                "keywords": ["りんご", "いちご"]
+            },
+            {
+                "name": "黄色い果物",
+                "keywords": ["バナナ", "レモン"]
+            }
+        ]
+    },
+    {
+        "Question": "以下の乗り物を用途で分類してください。",
+        "Categories": [
+            {
+                "name": "陸上の乗り物",
+                "keywords": ["車", "トラック", "自転車"]
+            },
+            {
+                "name": "水上の乗り物",
+                "keywords": ["船", "潜水艦"]
+            }
+        ]
+    }
+]
+###Important:
+1. Make sure to generate exactly {{questionnumber}} questions.
+2. The language using for the questions must same as the original document content.

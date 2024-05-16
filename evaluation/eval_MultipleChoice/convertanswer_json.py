@@ -7,8 +7,8 @@ import json
 # Please update the function name/signature per need
 @tool
 def convertanswer_json(llm_answer: str) -> object:
-    input_string = llm_answer.strip("'")
-    response_json=json.loads('{'+input_string+'}')
+    response_dict = {"answer": llm_answer}
+    response_json = json.dumps(response_dict)
     return response_json
 
 

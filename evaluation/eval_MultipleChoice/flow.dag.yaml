@@ -4,24 +4,25 @@ environment:
 inputs:
   answer:
     type: string
-    default: '"answer": [{"Question": "What is the difference between prompt flow
-      and LangChain?", "Options": [{"option": "Prompt flow is a suite of
-      development tools for building LLM apps, while LangChain is a framework.",
-      "isCorrect": false}, {"option": "Prompt flow is a framework for building
-      LLM apps, while LangChain is a suite of development tools.", "isCorrect":
-      false}, {"option": "Prompt flow and LangChain are both suites of
-      development tools for building LLM apps.", "isCorrect": false}, {"option":
-      "Prompt flow and LangChain are both frameworks for building LLM apps.",
-      "isCorrect": true}]}, {"Question": "What is the main emphasis of prompt
-      flow?", "Options": [{"option": "Quality through experimentations",
-      "isCorrect": true}, {"option": "Building LLM apps", "isCorrect": false},
-      {"option": "Integrating LLMs into existing systems", "isCorrect": false},
-      {"option": "Observing developers", "isCorrect": false}]}, {"Question":
-      "What has shaped the fundamental design principles of prompt flow?",
-      "Options": [{"option": "The popularity of LangChain", "isCorrect": false},
-      {"option": "The exploration stage of LLM apps", "isCorrect": false},
-      {"option": "Observing how developers integrate LLMs", "isCorrect": true},
-      {"option": "The launch of ChatGPT", "isCorrect": false}]}]'
+    default: '[{"Question":"What is the difference between prompt flow and
+      LangChain?","Options":[{"option":"Prompt flow is a suite of development
+      tools for building LLM apps, while LangChain is a
+      framework.","isCorrect":false},{"option":"Prompt flow is a framework for
+      building LLM apps, while LangChain is a suite of development
+      tools.","isCorrect":false},{"option":"Prompt flow and LangChain are both
+      suites of development tools for building LLM
+      apps.","isCorrect":false},{"option":"Prompt flow and LangChain are both
+      frameworks for building LLM apps.","isCorrect":true}]},{"Question":"What
+      is the main emphasis of prompt flow?","Options":[{"option":"Quality
+      through experimentations","isCorrect":true},{"option":"Building LLM
+      apps","isCorrect":false},{"option":"Integrating LLMs into existing
+      systems","isCorrect":false},{"option":"Observing
+      developers","isCorrect":false}]},{"Question":"What has shaped the
+      fundamental design principles of prompt flow?","Options":[{"option":"The
+      popularity of LangChain","isCorrect":false},{"option":"The exploration
+      stage of LLM apps","isCorrect":false},{"option":"Observing how developers
+      integrate LLMs","isCorrect":true},{"option":"The launch of
+      ChatGPT","isCorrect":false}]}]'
   content:
     type: string
     default: When we started this project, LangChain already became popular esp.
@@ -64,20 +65,13 @@ nodes:
     path: parse_score.py
   inputs:
     gpt_score: ${gpt_groundedness.output}
-- name: convertanswer_json
-  type: python
-  source:
-    type: code
-    path: convertanswer_json.py
-  inputs:
-    llm_answer: ${inputs.answer}
 - name: response_formatcheck
   type: python
   source:
     type: code
     path: response_formatcheck.py
   inputs:
-    validate_json: ${convertanswer_json.output}
+    response: ${inputs.answer}
 - name: aggregate
   type: python
   source:

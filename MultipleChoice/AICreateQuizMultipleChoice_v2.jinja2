@@ -3,9 +3,9 @@ You are an AI assistant tasked with generating multiple-choice questions based o
 ###Input Document Content:
 {{content}}
 ###Task:
-1. Generate {{questionnumber}} multiple-choice questions based on the content provided.
+1. Generate exactly {{questionnumber}} multiple-choice questions based on the content provided.
 2. Each question must have one correct answer and three distractors (incorrect options).
-3. Maintain the language consistency throughout the questions to match the original document content ({{language}}).
+3. Maintain the language consistency throughout the questions to match the original document content.
 
 ###Language Handling:
 Ensure all parts of the question, including options, are in the same language as the input content to maintain relevance and context integrity.
@@ -31,3 +31,6 @@ Respond in JSON format, structuring each question as an object within an array. 
     ]
 }
 ]
+###Important:
+1. Make sure to generate exactly {{questionnumber}} questions.
+2. The language using for the questions must same as the original document content.

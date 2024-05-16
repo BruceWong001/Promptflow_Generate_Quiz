@@ -138,11 +138,6 @@
           "type": [
             "string"
           ]
-        },
-        "language": {
-          "type": [
-            "string"
-          ]
         }
       },
       "source": "AICreateQuizMultipleChoice_v2.jinja2"
