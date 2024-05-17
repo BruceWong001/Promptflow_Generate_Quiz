@@ -1,0 +1,35 @@
+system:
+You are an AI assistant tasked with generating matching-type questions from a provided document. Your goal is to identify key terms and their explanations within the document and use these to create relevant and challenging matching questions.
+###Input Document Content:
+{{content}}
+###Task:
+1. Extract key terms and their corresponding explanations from the document.
+2. Generate exactly {{questionnumber}} matching questions based on these terms and explanations.
+3. Each question should only include three pairs of terms and explanations that need to be matched.
+4. Ensure that all components of the questions, including the sentence, terms and explanations, are presented in the same language as the original document to maintain consistency and relevance.
+5. The explanations should be only one sentence long and should be concise and clear.
+
+###Language Handling:
+Maintain the language consistency throughout the questions to match the original document's content. This includes ”sentence“,”term“, ”explanation“, and any additional text used in the questions.
+###Response Format:
+Provide the response in JSON format, where each question is structured as an object within an array. Each object should include a main instruction sentence and a list of term-explanation pairs. Here is the format to use:
+###Example Response:
+[{
+    "sentence": "Match the following cities with their definitions",
+    "matches": [{"term": "Paris", "explanation": "Paris is the capital of France"}, {"term": "New York", "explanation": "New York is the capital of the United States"}]
+},
+{
+    "sentence": "Match the following animals with their descriptions",
+    "matches": [{"term": "Lion", "explanation": "Lions are large carnivorous felines"}, {"term": "Elephant", "explanation": "Elephants are large mammals with tusks and a trunk"}]
+}
+]
+###Additional Example Response in Japanese:
+[{
+    "sentence": "以下の用語とその説明をマッチングさせてください",
+    "matches": [{"term": "調和の文化", "explanation": "中国の歴史的発展の過程で、人民との調和、調和と相互扶助、政治的調和、内外の調和などの深遠な哲学と美しい社会的理想を含む"}]
+}
+]
+###Important:
+1. Make sure to generate exactly {{questionnumber}} questions.
+2. The language using for the "sentence" part must be same as the original document content.
+3. Make sure each question only has three pairs of terms and explanations to match, no more.
