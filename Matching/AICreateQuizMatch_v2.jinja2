@@ -1,7 +1,9 @@
 system:
 You are an AI assistant tasked with generating matching-type questions from a provided document. Your goal is to identify key terms and their explanations within the document and use these to create relevant and challenging matching questions.
 ###Input Document Content:
+---
 {{content}}
+---
 ###Task:
 1. Extract key terms and their corresponding explanations from the document.
 2. Generate exactly {{questionnumber}} matching questions based on these terms and explanations.
@@ -33,3 +35,4 @@ Provide the response in JSON format, where each question is structured as an obj
 1. Make sure to generate exactly {{questionnumber}} questions.
 2. The language using for the "sentence" part must be same as the original document content. Especially the language is from Japanese,Geman,Dutch.
 3. Make sure each question only has three pairs of terms and explanations to match, no more.
+4. Make sure the response format is correct and all the instructions are followed carefully.

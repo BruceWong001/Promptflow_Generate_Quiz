@@ -4,7 +4,19 @@ environment:
 inputs:
   content:
     type: string
-    default: 在过去，一个男人在四十岁时死去，过着充实的生活，这种情况并不少见。但现在我们认为四十年的寿命非常短。人们活到八九十岁并不罕见，有些人甚至活到100岁。更重要的是，人们过着健康长寿的生活，并且活跃到他们的“黄金岁月”。人类的长寿主要归功于科学技术的进步。医学上的突破已经根除许多曾经常见的致命疾病。也许更重要的是，更好的总体健康状况意味着人们首先不太可能感染。更好的健康还有助于人们预防缓慢衰弱的疾病，例如心脏病，这些疾病可能会在很小的时候就夺走他们的生命。随着文明的进步，我们的生活环境和食物来源变得更加卫生。此外，工作现在更安全，对人体没有负担。经过几年的艰苦工作，我们不会疲惫不堪。
+    default: "庆历四年春，滕子京谪守巴陵郡。越明年，政通人和，百废具兴。乃重修岳阳楼，增其旧制，刻唐贤今人诗赋于其上。属予作文以记之。(具 通：俱)
+      　　予观夫巴陵胜状，在洞庭一湖。衔远山，吞长江，浩浩汤汤，横无际涯;朝晖夕阴，气象万千。此则岳阳楼之大观也，前人之述备矣。然则北通巫峡，南极潇湘，\
+      迁客骚人，多会于此，览物之情，得无异乎?
+      　　若夫霪雨霏霏，连月不开，阴风怒号，浊浪排空;日星隐曜，山岳潜形;商旅不行，樯倾楫摧;薄暮冥冥，虎啸猿啼。登斯楼也，则有去国怀乡，忧谗畏讥，满目\
+      萧然，感极而悲者矣。
+      　　至若春和景明，波澜不惊，上下天光，一碧万顷;沙鸥翔集，锦鳞游泳;岸芷汀兰，郁郁青青。而或长烟一空，皓月千里，浮光跃金，静影沉璧，渔歌互答，此乐\
+      何极!登斯楼也，则有心旷神怡，宠辱偕忘，把酒临风，其喜洋洋者矣。        Alas!  Try to seek the heart of
+      the ancient human, or the two different, what?  Don't be happy with
+      things, don't be sad with yourself;  The high of the temple is worried
+      about its people;  Where the lake is far, worry about its king.  Both
+      advance and retreat are worrying.  But when will you be happy?  It must be
+      said: \"First the world of worry and worry, after the world of joy and
+      joy.\"  Booo!  Weiss, who will return with us?   September 15, 2006. "
     description: 传入的生成quiz赌赢的文档内容。
   questionnumber:
     type: int

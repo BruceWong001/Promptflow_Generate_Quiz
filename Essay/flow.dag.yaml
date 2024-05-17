@@ -4,15 +4,45 @@ environment:
 inputs:
   content:
     type: string
-    default: 森は、二人が思っていた以上に深かった。頭上（ずじょう）は鬱蒼（うっそう）とした木々の枝（えだ）に厚く覆われ、昼間でもそうそう陽の光（ひのひかり）など漏れてこなかった。奥のほうへ目を凝らしてみても、吸い込まれるような限りない暗闇（くらやみ）が広がるばかり。騎士たちは、どこかで鳴く動物の声や、草や木々がガサガサ揺れる音に神経（しんけい）を張りつめながら、さらに奥へと足を踏み入れていった。青い草の匂い、土の匂い、ひんやりとした空気。二人はまるで、自分たちが森につかまり、二度と引き返せないのではないかという気持ちになった。そんなとき、シドとノットはいやでも決意（けつい）を新たにせざるをえなかった。
+    default: 'De relatie tussen landen is ook als de interactie tussen mensen: de
+      waarde van kennismaking ligt in wederzijds begrip; Het begrijpen van
+      elkaar is waardevol om je hart te begrijpen. diepgewortelde en weelderige
+      samenwerking; Wederzijdse afhankelijkheid van hulpvoertuigen voor vervoer;
+      Vertrouwen is zo stevig als een steen. Doel, samen op de weg lopen of
+      wanneer alles klaar is, de verschuiving en versnelling van bilaterale
+      betrekkingen zal natuurlijk zijn. De torenhoge bergen zijn eindeloos in
+      één oogopslag. De schaal voor het markeren van nationale betrekkingen moet
+      in verschillende richtingen liggen. Markeer met de positie gesmeed door de
+      tijden. In het Servische Gebouw kondigden de staatshoofden van China en
+      Servië gezamenlijk de bouw aan van een nieuw tijdperk van de gemeenschap
+      van China Servië met een gedeelde toekomst. De blijvende geest van
+      standvastige vriendschap heeft een nieuwe reis voor China en Servië
+      verlicht. Deze reis belichaamt het gewicht van het verleden en opent een
+      bredere toekomst. Reizen in de tegenovergestelde richting, omdat de
+      concepten consistent zijn en de achtervolging vergelijkbaar is.
+      "Co-ontwikkeling, win-win samenwerking en wederzijdse verwezenlijking" is
+      de gemeenschappelijke visie van China en Servië, evenals alle landen in de
+      wereld die zich houden aan onafhankelijkheid, onafhankelijkheid, vrede en
+      ontwikkeling. Op de 9e, in het kantoor van de premier in Boedapest,
+      kondigden de leiders van China en Hongarije de oprichting van een
+      alomvattend strategisch partnerschap voor alle weersomstandigheden aan
+      voor het nieuwe tijdperk tussen China en Hongarije. Vol vertrouwen in de
+      ontwikkelingsvooruitzichten van bilaterale betrekkingen. Vertrouwen heeft
+      een rijk en kleurrijk verleden geschreven, evenals een veelbelovend nieuw
+      hoofdstuk in de toekomst. Mark met diplomatieke hoge normen van
+      hoffelijkheid. De Servische president Vucic en zijn vrouw, evenals
+      voormalig president, voorzitter, premier, minister van Buitenlandse Zaken
+      en anderen, gingen persoonlijk naar het vliegveld om hen te verwelkomen.
+      Ze zwaaiden vaarwel en stonden lang terwijl ze het speciale vliegtuig
+      zagen opstijgen.'
     description: 传入的生成quiz赌赢的文档内容。
   language:
     type: string
-    default: Japanese
+    default: Dutch
     description: 生成考题的期待语言
   questionnumber:
     type: int
-    default: 2
+    default: 10
     description: 预期的考题个数。
 outputs:
   answer:
