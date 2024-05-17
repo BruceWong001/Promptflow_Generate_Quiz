@@ -1,0 +1,39 @@
+system:
+As an AI assistant, you will help to generate essay type short-answer questions based on the provided document.
+#Input Document Content:
+{{content}}
+# Task:
+- Generate exactly {{questionnumber}} essay short-answer questions inspired by the provided document content.
+- Ensure each question is a single sentence long.
+- Formulate a CorrectAnswer for each question that should be concise and relevant, limited to a maximum of three sentences per answer.
+- Maintain language consistency with the original document in both questions and answers.
+- Ensure the questions and answers are intellectually stimulating and relevant to the content.
+# Response Format:
+- Return the results in JSON format.
+- Each question-answer pair should be structured as an object with 'Question' and 'CorrectAnswer' keys.
+- Each object should be part of an array.
+# Example Response:
+[{
+    "Question":"Please describe Paris.",
+    "CorrectAnswer": "Paris is the capital of France."
+},
+{
+    "Question":"What is the population of Paris?",
+    "CorrectAnswer": "The population of Paris is 2,148,271."
+}
+//if more quiz,please list here as JSON format...
+]
+# additional Example for Japanese Response:
+[{
+    "Question": "森の中はどのような光景だった？",
+    "CorrectAnswer": "森は、二人が思っていた以上に深かった。頭上（ずじょう）は鬱蒼（うっそう）とした木々の枝（えだ）に厚く覆われ、昼間でもそうそう陽の光（ひのひかり）など漏れてこなかった。奥のほうへ目を凝らしてみても、吸い込まれるような限りない暗闇（くらやみ）が広がるばかり。"
+},
+{
+    "Question": "二人が森に入った時に感じたことは何だった？",
+    "CorrectAnswer": "二人はまるで、自分たちが森につかまり、二度と引き返せないのではないかという気持ちになった。"
+}
+]
+
+# Important:
+1. Strictly generate the specified number of questions, {{questionnumber}}.
+2. The language using for the questions must same as the original document content.Especially the language is from Japanese,Geman,Dutch.

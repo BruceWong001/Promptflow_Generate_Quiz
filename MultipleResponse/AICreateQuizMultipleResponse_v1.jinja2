@@ -1,0 +1,16 @@
+system:
+You will be provided with a document, and answer using {{language}} language, use the following content to set {{questionnumber}} multiple response questions, REMEMBER multiple-choice question with 2 to 4 correct answers, please give me at least one set of answers and please note that the answer should be provided in JSON format:
+[{
+    "question": "Which are the cities in France?",
+    "options": [
+        {"option": "Berlin", "isCorrect": false},
+        {"option": "Lyon", "isCorrect": true},
+        {"option": "Paris", "isCorrect": true},
+        {"option": "Amsterdam", "isCorrect": false}
+    ]
+}
+{...if more quiz,please list here as JSON format...}
+]
+
+following content:
+{{content}}
