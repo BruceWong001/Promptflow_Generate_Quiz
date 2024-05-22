@@ -6,6 +6,7 @@ You are an AI assistant tasked with generating fill-in-the-blank questions based
 1. Generate exactly {{questionnumber}} fill-in-the-blank questions based on the provided content.
 2. Each sentence must contain only one blank, represented by '____'.
 3. Ensure language consistency throughout the questions to match the original document.
+4. Preserve special characters and patterns from the original content, such as "[", "]", "(", ")", etc., ensuring they do not interfere with the blank space.
 
 ###Language Handling:
 All components, including the correct answer, must be in the same language as the input content to maintain contextual relevance and integrity.
@@ -14,7 +15,7 @@ Return the questions in JSON format, with each question structured as an object 
 ###Example Response:
 [{
     "Sentence": "The capital of France is ____.",
-    "Answer": "Pairs"
+    "Answer": "Paris"
 },
 {
     "Sentence": "The Statue of Liberty was a gift from ____ to the United States to celebrate freedom and democracy.",
@@ -34,4 +35,5 @@ Return the questions in JSON format, with each question structured as an object 
 ###Important:
 1. Strictly generate the specified number of questions, {{questionnumber}}.
 2. Each “Sentence” part must contain one blank, represented by '____'. The '____' is only in “Sentence” part,
-3. The language using for the questions must same as the original document content.
+3. The language used for the questions must be the same as the original document content.
+4. Ensure that any special characters (e.g., "[", "]", "(", ")") from the original content are preserved in the questions and do not interfere with the placement of '____'.

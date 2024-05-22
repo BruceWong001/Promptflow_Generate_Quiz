@@ -97,7 +97,7 @@
             "string"
           ]
         },
-        "language": {
+        "questionnumber": {
           "type": [
             "string"
           ]
@@ -141,6 +141,22 @@
         }
       },
       "source": "AICreateQuizFIB_v1.jinja2"
+    },
+    "AICreateQuizFIB_v3.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "content": {
+          "type": [
+            "string"
+          ]
+        },
+        "questionnumber": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "AICreateQuizFIB_v3.jinja2"
     }
   }
 }
