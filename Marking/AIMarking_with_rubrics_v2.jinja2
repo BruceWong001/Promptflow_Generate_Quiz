@@ -87,10 +87,70 @@ The response must be in JSON format. It should include an overall comment and a 
             "Comment": "The response does not demonstrate critical thinking, lacking deep insight or analysis of the issue."
         },
         {
-            "RubricsName": "言語とメカニクス,
+            "RubricsName": "言語とメカニクス“，
             "GivenScore": 10,
             "TotalScore": 100,
             "Comment": "The response has issues with language and mechanics, including several grammatical errors."
+        }
+    ]
+}
+###Using Japanese in comments for Chinese response  as an example
+{
+  "OverallComment": "回答は非常に良いです。明確で組織的であり、独自性と関連性があります。ただし、より具体的な説明や詳細な例を挙げることで、回答の質を向上させることができます。また、フレーズや文法の使用にもう少し注意する必要があります。全体的には優れた回答です.",
+  "QuestionRubrics": [
+    {
+      "RubricsName": "表现",
+      "GivenScore": 90,
+      "TotalScore": 100,
+      "Comment": "回答は非常に明確で、説明も十分です。ただし、フレーズや文法の一部に改善の余地があります。"
+    },
+    {
+      "RubricsName": "组织",
+      "GivenScore": 85,
+      "TotalScore": 100,
+      "Comment": "回答は組織的であり、段落の移り変わりもスムーズです。ただし、より具体的な例や詳細な説明を追加することで、さらに組織性を向上させることができます。"
+    },
+    {
+      "RubricsName": "批判性思维",
+      "GivenScore": 80,
+      "TotalScore": 100,
+      "Comment": "回答は批判的思考を示しており、Phởの特徴や人気の理由について十分に説明しています。ただし、もう少し詳細な例や具体的な分析を追加することで、より深い洞察を示すことができます。"
+    },
+    {
+      "RubricsName": "连贯性",
+      "GivenScore": 95,
+      "TotalScore": 100,
+      "Comment": "回答は非常に連貫性があり、段落とアイデアの間につながりがあります。フレーズや文法の一貫性にも注意が払われています。"
+    }
+  ]
+}
+###Using Chinese in comments for Japanese response  as an example
+{
+    "OverallComment": "回答非常好。对Phở的描述清晰且有条理。具体说明了Phở的特点和受欢迎的原因，也展示了批判性思维。不过，需要注意语法和用词。总体来说，这是一个优秀的回答。",
+    "QuestionRubrics": [
+        {
+            "RubricsName": "表現の明確さ",
+            "GivenScore": 90,
+            "TotalScore": 100,
+            "Comment": "回答非常清晰，解释也很充分。不过，语法和用词部分还有改进的空间。"
+        },
+        {
+            "RubricsName": "構成と構造",
+            "GivenScore": 85,
+            "TotalScore": 100,
+            "Comment": "回答有条理，段落过渡也很顺畅。不过，通过增加更具体的例子和详细的描述，可以进一步提高组织性。"
+        },
+        {
+            "RubricsName": "批判的思考",
+            "GivenScore": 80,
+            "TotalScore": 100,
+            "Comment": "回答展示了批判性思维，充分说明了Phở的特点和受欢迎的原因。不过，通过增加更多具体的例子和详细的分析，可以展示更深入的洞察。"
+        },
+        {
+            "RubricsName": "言語とメカニクス",
+            "GivenScore": 95,
+            "TotalScore": 100,
+            "Comment": "回答非常连贯，段落和想法之间有良好的衔接。语法和用词的一致性也得到了关注。"
         }
     ]
 }
@@ -99,3 +159,4 @@ The response must be in JSON format. It should include an overall comment and a 
 1. Only a correct JSON format response is acceptable.
 2. The value of "Comment" in each Rubrics section and "OverallComment" in top level field must use the {{Language}} language to describe the value content.
 3. The value of "RubricsName" in each Rubrics section must keep the original language as it is.
+4. Please check the language used for comment and overall comment are correct, especially when the language is not Chinese but the response is in Japanese.
