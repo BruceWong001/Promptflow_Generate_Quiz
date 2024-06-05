@@ -1,0 +1,100 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+environment:
+  python_requirements_txt: requirements.txt
+inputs:
+  Question:
+    type: string
+    default: Talk about Pho VietNam
+    description: 传入的生成quiz赌赢的文档内容。
+  Language:
+    type: string
+    default: Chines
+    description: 生成考题的期待语言
+  Response:
+    type: string
+    default: "When we talk about Pho, we can’t not talk about Mixed Pho – a great
+      Vietnamese dish that is too hard to resist. Mixed Pho usually has two
+      types: chicken and beef. Both are popular and frequently eaten by
+      Vietnamese. In order to make a bowl of Mixed Pho, we need: rice noodles,
+      garlic, ginger, fried peanuts, herbs, fish sauce, salt, onion, sliced and
+      cooked chicken or beef, lime and some chili pepper. After being cooked,
+      all of the ingredients are mixed together and the dish is ready to be
+      served! According to each person’s taste, pepper or soy sauce can be added
+      for more flavors. A bowl of Mixed Pho is usually around 35.000 VND –
+      65.000 VND at restaurants. Many citizens like to have Mixed Pho for
+      breakfast, lunch and dinner. Nowadays, Mixed Pho can be found everywhere,
+      not just in Vietnam but also around the world."
+    description: 预期的考题个数。
+  TotalScore:
+    type: double
+    default: 100
+  Rubrics:
+    type: list
+    default:
+    - name: Expression1
+      description: null
+      score: 100
+    - name: Organization
+      description: null
+      score: 100
+    - name: Critical thinking
+      description: null
+      score: 100
+    - name: Mechanics
+      description: null
+      score: 100
+outputs:
+  answer:
+    type: string
+    reference: ${chat.output}
+  answer_json:
+    type: string
+    reference: ${format_response.output}
+nodes:
+- name: chat
+  use_variants: true
+- name: format_response
+  type: python
+  source:
+    type: code
+    path: format_response.py
+  inputs:
+    llmresponse: ${chat.output}
+    totalscore: ${inputs.TotalScore}
+node_variants:
+  chat:
+    default_variant_id: variant_1
+    variants:
+      variant_0:
+        node:
+          type: llm
+          source:
+            type: code
+            path: AIMarking_v1.jinja2
+          inputs:
+            deployment_name: gpt-35-turbo-16k
+            max_tokens: 1000
+            temperature: 0.7
+            Language: ${inputs.Language}
+            Question: ${inputs.Question}
+            Rubrics: ${inputs.Rubrics}
+            TotalScore: ${inputs.TotalScore}
+            Response: ${inputs.Response}
+          connection: azure_oai_gpt35
+          api: chat
+      variant_1:
+        node:
+          type: llm
+          source:
+            type: code
+            path: AIMarking_with_rubrics_v2.jinja2
+          inputs:
+            deployment_name: gpt-35-turbo-16k
+            max_tokens: 4096
+            temperature: 0.7
+            Question: ${inputs.Question}
+            Response: ${inputs.Response}
+            Rubrics: ${inputs.Rubrics}
+            Language: ${inputs.Language}
+          connection: azure_oai_gpt35
+          api: chat

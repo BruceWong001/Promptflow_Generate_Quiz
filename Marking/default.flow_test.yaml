@@ -1,0 +1,9 @@
+tests:
+  - name: Gen_Quiz_default_20240513_134458_251000
+    display_name: Gen_Quiz_${variant_id}_${timestamp}
+    flow: /Users/brucewong/workspace/code/AI_Research/promptflow/Generate_Quiz/Matching
+    data: /Users/brucewong/workspace/code/AI_Research/promptflow/Generate_Quiz/Matching/data.jsonl
+    column_mapping:
+      content: ${data.content}
+      language: ${data.language}
+      questionnumber: ${data.questionnumber}
