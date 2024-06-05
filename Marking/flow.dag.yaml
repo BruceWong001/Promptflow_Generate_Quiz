@@ -8,7 +8,7 @@ inputs:
     description: 传入的生成quiz赌赢的文档内容。
   Language:
     type: string
-    default: Chines
+    default: Japanese
     description: 生成考题的期待语言
   Response:
     type: string

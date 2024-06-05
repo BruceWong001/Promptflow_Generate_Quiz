@@ -34,7 +34,7 @@ The response must be in JSON format. It should include an overall comment and a 
 - "TotalScore": The maximum score possible for that rubric.
 - "Comment": A detailed explanation for the given score.
 ##Example Response:
-###Using English for comments as an example
+###Using English in comments for English as an example
 {
   "OverallComment": "The response is clear and organized, making it easy to read and understand. It shows originality and relevance with appropriate methods suggested. However, adding more specific examples and explanations could enhance the quality of the answer. Usage of citations and further emphasis on relevance are recommended for improvement. Overall, it is an excellent response with some areas for improvement.",
   "QuestionRubrics": [
@@ -64,6 +64,38 @@ The response must be in JSON format. It should include an overall comment and a 
     }
   ]
 }
+###Using English in comments for Japanese response  as an example
+{
+    "OverallComment": "The response lacks clarity and organization, making it difficult to understand. It does not address the prompt properly and fails to provide relevant information about the candidate. The language and mechanics are also poor, with several grammatical errors. Overall, the answer needs significant improvement in all areas.",
+    "QuestionRubrics": [
+        {
+            "RubricsName": "表現の明確さ",
+            "GivenScore": 20,
+            "TotalScore": 100,
+            "Comment": "The response lacks clarity and organization, making it difficult to understand. It does not provide relevant information for a self-introduction, and the explanation is insufficient."
+        },
+        {
+            "RubricsName": "構成と構造",
+            "GivenScore": 10,
+            "TotalScore": 100,
+            "Comment": "The response lacks clear organization and structure, and it does not properly address the prompt."
+        },
+        {
+            "RubricsName": "批判的思考",
+            "GivenScore": 15,
+            "TotalScore": 100,
+            "Comment": "The response does not demonstrate critical thinking, lacking deep insight or analysis of the issue."
+        },
+        {
+            "RubricsName": "言語とメカニクス,
+            "GivenScore": 10,
+            "TotalScore": 100,
+            "Comment": "The response has issues with language and mechanics, including several grammatical errors."
+        }
+    ]
+}
 
 #Important:
 1. Only a correct JSON format response is acceptable.
+2. The value of "Comment" in each Rubrics section and "OverallComment" in top level field must use the {{Language}} language to describe the value content.
+3. The value of "RubricsName" in each Rubrics section must keep the original language as it is.
